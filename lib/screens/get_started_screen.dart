@@ -118,7 +118,7 @@ class _GetstartedScreenState extends State<GetstartedScreen> {
                             ),
                             padding: EdgeInsets.all(12),
                             child: Image.asset(
-                              'assets/facebook.png',
+                              'assets/google.png',
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -132,7 +132,7 @@ class _GetstartedScreenState extends State<GetstartedScreen> {
                             ),
                             padding: EdgeInsets.all(12),
                             child: Image.asset(
-                              'assets/google.png',
+                              'assets/facebook.png',
                               fit: BoxFit.contain,
                             ),
                           ),
