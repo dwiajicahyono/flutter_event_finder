@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:event_finder/screens/choose_event_screen.dart';
 
 class FollowOrganizerScreen extends StatefulWidget {
   const FollowOrganizerScreen({super.key});
@@ -18,7 +19,12 @@ class _FollowOrganizerScreenState extends State<FollowOrganizerScreen> {
         backgroundColor: Colors.transparent,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChooseEventScreen()),
+              );
+            },
             child: Text(
               'Skip',
               style: GoogleFonts.poppins(
@@ -78,32 +84,10 @@ class _FollowOrganizerScreenState extends State<FollowOrganizerScreen> {
             ),
             SizedBox(height: 12),
             SizedBox(
-              height: 320,
+              height: 450,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: [
-                  Container(
-                    width: 300,
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withAlpha(50),
-                          blurRadius: 10,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: 50),
-                  Container(
-                    width: 300,
-                    padding: EdgeInsets.all(12),
-                    decoration: BoxDecoration(color: Colors.grey),
-                  ),
-                ],
+                children: [CardWidget(), CardWidget(), CardWidget()],
               ),
             ),
             SizedBox(height: 20),
@@ -113,7 +97,12 @@ class _FollowOrganizerScreenState extends State<FollowOrganizerScreen> {
               height: 52,
               child: ElevatedButton(
                 onPressed: () {
-                  print('helo dunia');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ChooseEventScreen(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xff7459E4),
@@ -137,4 +126,123 @@ class _FollowOrganizerScreenState extends State<FollowOrganizerScreen> {
       ),
     );
   }
+}
+
+class CardWidget extends StatelessWidget {
+  const CardWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      padding: EdgeInsets.all(16),
+      margin: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha(50),
+            blurRadius: 10,
+            offset: Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 150,
+            decoration: BoxDecoration(
+              color: Colors.grey[350],
+              borderRadius: BorderRadius.circular(16),
+            ),
+          ),
+          SizedBox(height: 18),
+          SizedBox(
+            width: 120,
+            height: 50,
+            child: Stack(
+              children: [
+                Positioned(left: 0, child: _buildCircle()),
+                Positioned(left: 30, child: _buildCircle()),
+                Positioned(left: 60, child: _buildCircle()),
+              ],
+            ),
+          ),
+          SizedBox(height: 18),
+          Text(
+            'Arts and Crafts of 8Ape',
+            style: GoogleFonts.poppins(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(height: 18),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'by 8Ape',
+                style: GoogleFonts.poppins(fontSize: 14, color: Colors.grey),
+              ),
+              Row(
+                children: [
+                  Icon(
+                    Icons.location_on_outlined,
+                    size: 16,
+                    color: Color(0xff7459E4),
+                  ),
+                  SizedBox(width: 4),
+                  Text(
+                    'California, USA',
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(height: 16),
+          SizedBox(
+            width: double.infinity,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: () {
+                print('Follow button pressed');
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                elevation: 0,
+                side: BorderSide(color: Color(0xff7459E4), width: 1),
+              ),
+              child: Text(
+                'Follow',
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  color: Color(0xff7459E4),
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+Widget _buildCircle() {
+  return Container(
+    width: 40,
+    height: 40,
+    decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.grey[300]),
+  );
 }
