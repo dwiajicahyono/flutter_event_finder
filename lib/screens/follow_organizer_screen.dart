@@ -15,8 +15,11 @@ class _FollowOrganizerScreenState extends State<FollowOrganizerScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back),
+        ),
+        backgroundColor: Colors.white,
         actions: [
           TextButton(
             onPressed: () {
@@ -42,7 +45,6 @@ class _FollowOrganizerScreenState extends State<FollowOrganizerScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 8),
             Text(
               'Follow Organizer',
               style: GoogleFonts.poppins(
@@ -55,7 +57,7 @@ class _FollowOrganizerScreenState extends State<FollowOrganizerScreen> {
               'Follow a collections to get updates as new events are added to collections to you',
               style: GoogleFonts.poppins(fontSize: 13, color: Colors.grey),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             TextField(
               decoration: InputDecoration(
                 hintText: 'Search ...',
@@ -74,7 +76,7 @@ class _FollowOrganizerScreenState extends State<FollowOrganizerScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 10),
             Text(
               'Recommendations',
               style: GoogleFonts.poppins(
@@ -82,7 +84,6 @@ class _FollowOrganizerScreenState extends State<FollowOrganizerScreen> {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(height: 12),
             SizedBox(
               height: 450,
               child: ListView(
