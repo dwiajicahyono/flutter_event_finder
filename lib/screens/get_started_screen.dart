@@ -1,6 +1,7 @@
 import 'package:event_finder/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:event_finder/screens/main_navigation_screen.dart';
 
 class GetstartedScreen extends StatefulWidget {
   const GetstartedScreen({super.key});
@@ -56,7 +57,12 @@ class _GetstartedScreenState extends State<GetstartedScreen> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            print('test');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainNavigationScreen(),
+                              ),
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff7459E4),
